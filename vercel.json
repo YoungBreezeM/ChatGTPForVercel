@@ -1,0 +1,5 @@
+{
+  "routes": [
+    { "src": "/chat", "methods": ["POST"], "dest": "api/chatgtp.go" }
+  ]
+}
