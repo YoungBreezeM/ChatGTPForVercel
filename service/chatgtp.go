@@ -109,7 +109,7 @@ func (c *Chat) Send(token string, w http.ResponseWriter) {
 
 	response, err := client.Do(request)
 	if err != nil {
-		log.Println(err)
+		log.Println("%", err)
 		return
 	}
 	defer response.Body.Close()
@@ -146,7 +146,7 @@ func (c *Chat) Send(token string, w http.ResponseWriter) {
 }
 
 func (s *Chat) Chat(req *ChatRequest, w http.ResponseWriter) (err error) {
-	log.Printf("Received: %s", req.ChatId)
+	log.Printf("Received: %+v", req)
 
 	if s.Status == chatgtp.BUSY {
 		if _, err = w.Write([]byte("service is busy now")); err != nil {
