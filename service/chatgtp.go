@@ -109,7 +109,7 @@ func (c *Chat) Send(token string, w http.ResponseWriter) {
 
 	response, err := client.Do(request)
 	if err != nil {
-		log.Println("%", err)
+		log.Printf("request:%v\n", err)
 		return
 	}
 	defer response.Body.Close()
@@ -130,6 +130,7 @@ func (c *Chat) Send(token string, w http.ResponseWriter) {
 			}
 			//
 			if len(line) > 1 {
+				log.Println(string(line))
 				if _, err = w.Write(line); err != nil {
 					log.Println(err)
 				}
