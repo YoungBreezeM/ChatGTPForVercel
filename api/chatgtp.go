@@ -8,7 +8,13 @@ import (
 )
 
 func ChatGTP(w http.ResponseWriter, r *http.Request) {
-	w.Header().Add("Content-Type", "text/event-stream")
+	w.Header().Set("Content-Type", "text/event-stream")
+	w.Header().Set("Cache-Control", "no-cache")
+	w.Header().Set("Connection", "keep-alive")
+
+	// 设置跨域访问
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		http.Error(w, "Failed to read request body", http.StatusInternalServerError)
