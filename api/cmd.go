@@ -6,7 +6,7 @@ import (
 	"os/exec"
 )
 
-func cmd(w http.ResponseWriter, r *http.Request) {
+func Cmd(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
 
 	// 获取特定参数的值
