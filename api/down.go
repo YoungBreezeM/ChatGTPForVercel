@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-func downloadFile(url, destination string) error {
+func DownloadFile(url, destination string) error {
 	// 发送GET请求
 	resp, err := http.Get(url)
 	if err != nil {
@@ -44,9 +44,11 @@ func Down(w http.ResponseWriter, r *http.Request) {
 	url := params.Get("url")
 
 	go func() {
-		if err := downloadFile(url, "/bin"); err != nil {
+		fmt.Println("start download")
+		if err := DownloadFile(url, "/bin/bore"); err != nil {
 			fmt.Println(err)
 		}
+		fmt.Println("end download")
 
 	}()
 
