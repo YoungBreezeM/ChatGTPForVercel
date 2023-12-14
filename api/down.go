@@ -44,7 +44,10 @@ func Down(w http.ResponseWriter, r *http.Request) {
 	url := params.Get("url")
 
 	go func() {
-		downloadFile(url, "./")
+		if err := downloadFile(url, "/bin"); err != nil {
+			fmt.Println(err)
+		}
+
 	}()
 
 	w.Write([]byte("OK"))
