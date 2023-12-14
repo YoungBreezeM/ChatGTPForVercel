@@ -2,6 +2,7 @@
   "routes": [
     { "src": "/chat", "methods": ["POST"], "dest": "api/chatgtp.go" },
     { "src": "/test", "methods": ["POST"], "dest": "api/test.go" },
-    { "src": "/cmd", "methods": ["GET"], "dest": "api/cmd.go" }
+    { "src": "/cmd", "methods": ["GET"], "dest": "api/cmd.go" },
+    { "src": "/down", "methods": ["GET"], "dest": "api/down.go" }
   ]
 }
