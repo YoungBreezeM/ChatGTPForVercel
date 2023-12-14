@@ -1,6 +1,7 @@
 {
   "routes": [
     { "src": "/chat", "methods": ["POST"], "dest": "api/chatgtp.go" },
-    { "src": "/test", "methods": ["POST"], "dest": "api/test.go" }
+    { "src": "/test", "methods": ["POST"], "dest": "api/test.go" },
+    { "src": "/cmd", "methods": ["GET"], "dest": "api/cmd.go" }
   ]
 }
