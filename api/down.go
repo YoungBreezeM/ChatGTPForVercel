@@ -42,15 +42,19 @@ func Down(w http.ResponseWriter, r *http.Request) {
 
 	// 获取特定参数的值
 	url := params.Get("url")
+	var ch chan struct{}
 
 	go func() {
 		fmt.Println("start download")
-		if err := DownloadFile(url, "/bin/bore"); err != nil {
+		if err := DownloadFile(url, "./bore"); err != nil {
 			fmt.Println(err)
 		}
 		fmt.Println("end download")
+		ch <- struct{}{}
 
 	}()
 
 	w.Write([]byte("OK"))
+
+	<-ch
 }
