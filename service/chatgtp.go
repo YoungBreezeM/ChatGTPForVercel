@@ -149,13 +149,6 @@ func (c *Chat) Send(token string, w http.ResponseWriter) {
 func (s *Chat) Chat(req *ChatRequest, w http.ResponseWriter) (err error) {
 	log.Printf("Received: %+v", req)
 
-	if s.Status == chatgtp.BUSY {
-		if _, err = w.Write([]byte("service is busy now")); err != nil {
-			log.Println(err)
-		}
-		return
-	}
-
 	cg := NewChatGPTRequest()
 
 	if len(req.ConversationId) > 0 {
